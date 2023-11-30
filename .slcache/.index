@@ -4578,3 +4578,7 @@ n:2526:org/codehaus/groovy/grails/project/compiler/GrailsProjectWatcher$1
 n:3103:jline/console/history/MemoryHistory$EntriesIterator
 n:1117:jline/console/history/MemoryHistory$EntryImpl
 n:264:jline/console/history/History$Entry
+n:3232:grails/util/PluginBuildSettings$_getCompileScopedSupportedPluginInfos_closure19$_closure28
+n:731:org/codehaus/groovy/runtime/dgm$12
+n:789:org/codehaus/groovy/runtime/dgm$14
+n:3372:org/codehaus/groovy/grails/resolve/PluginInstallEngine$_checkExistingPluginInstall_closure7
