@@ -55,18 +55,24 @@ class BootStrap {
               }
           }
   */
-        new TekUser(fullName: 'John Doe',
+
+        def user1 = new TekUser(fullName: 'John Doe',
                 userName: 'jdoe',
                 password: 't0ps3cr3t',
                 email: 'jdoe@johnsgroovyshop.com',
                 website: 'blog.johnsgroovyshop.com',
-                bio: '''John has been programming for over 40 years. He has worked with every programming language known to man and has settled on Groovy. In his spare time, John dabbles in astro physics and plays shuffleboard.''').save()
-        new TekUser(fullName: 'John Deere',
+                bio: '''John has been programming for over 40 years. He has worked with every programming language known to man and has settled on Groovy. In his spare time, John dabbles in astro physics and plays shuffleboard.''')
+
+        user1.save()
+
+        def user2 = new TekUser(fullName: 'John Deere',
                 userName: 'tractorman',
                 password: 't0ps3cr3t',
                 email: 'john.deere@porkproducers.org',
                 website: 'www.perl.porkproducers.org',
-                bio: '''John is a top notch Perl programmer and a pretty good hand around the farm. If he can't program it he can plow it!''').save()
+                bio: '''John is a top notch Perl programmer and a pretty good hand around the farm. If he can't program it he can plow it!''')
+
+        user2.save()
 
         def event1 = new TekEvent(name: 'Gateway Code Camp',
                 city: 'Saint Louis, MO',
@@ -82,7 +88,6 @@ class BootStrap {
                 startDate: new Date('11/2/2013'),
                 endDate: new Date('11/2/2013'),
                 description: 'Join the Perl programmers of the ...').save()
-
         def g1 = TekEvent.findByName('Gateway Code Camp')
         g1.addToVolunteers(new TekUser(fullName: 'Sarah Martin',
                 userName: 'sarah',
@@ -102,20 +107,20 @@ class BootStrap {
         g1.addToRespondents('solomon@bootstrapwelding.com')
         g1.save()
 
-        def s1 = new Sponsor(name:'Contegix',
-                website:'http://www.contegix.com',
-                description:'Beyond Managed Hosting for your Enterprise').save()
-        def s2 = new Sponsor(name:'Object Computing Incorporated',
-                website:'http://ociweb.com',
-                description:'An OO Software Engineering Company').save()
-        def sp1 = new Sponsorship(event:g1,
-                sponsor:s1,
-                contributionType:'Other',
-                description:'Cool T-Shirts').save()
-        def sp2 = new Sponsorship(event:g1,
-                sponsor:s2,
-                contributionType:'Venue',
-                description:'Will be paying for the Moscone').save()
+        def s1 = new Sponsor(name: 'Contegix',
+                website: 'http://www.contegix.com',
+                description: 'Beyond Managed Hosting for your Enterprise').save()
+        def s2 = new Sponsor(name: 'Object Computing Incorporated',
+                website: 'http://ociweb.com',
+                description: 'An OO Software Engineering Company').save()
+        def sp1 = new Sponsorship(event: g1,
+                sponsor: s1,
+                contributionType: 'Other',
+                description: 'Cool T-Shirts').save()
+        def sp2 = new Sponsorship(event: g1,
+                sponsor: s2,
+                contributionType: 'Venue',
+                description: 'Will be paying for the Moscone').save()
     }
     def destroy = {
     }

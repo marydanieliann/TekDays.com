@@ -85,33 +85,54 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
-environments {
-    development {
-        grails.logging.jul.usebridge = true
-    }
-    production {
-        grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
-    }
-}
+//environments {
+//    development {
+//        grails.logging.jul.usebridge = true
+//    }
+//    production {
+//        grails.logging.jul.usebridge = false
+//        // TODO: grails.serverURL = "http://www.changeme.com"
+//    }
+//}
 
 // log4j configuration
-log4j.main = {
-    // Example of changing the log pattern for the default console appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
-
+//log4j.main = {
+//    // Example of changing the log pattern for the default console appender:
+//    //
+//    //appenders {
+//    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+//    //}
+//
+//    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
+//           'org.codehaus.groovy.grails.web.pages',          // GSP
+//           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+//           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+//           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+//           'org.codehaus.groovy.grails.commons',            // core / classloading
+//           'org.codehaus.groovy.grails.plugins',            // plugins
+//           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+//           'org.springframework',
+//           'org.hibernate',
+//           'net.sf.ehcache.hibernate'
+//}
+log4j = {
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-           'org.codehaus.groovy.grails.web.pages',          // GSP
-           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-           'org.codehaus.groovy.grails.commons',            // core / classloading
-           'org.codehaus.groovy.grails.plugins',            // plugins
-           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
-}
+            'org.codehaus.groovy.grails.web.pages',          // GSP
+            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+            'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+            'org.codehaus.groovy.grails.commons',            // core / classloading
+            'org.codehaus.groovy.grails.plugins',            // plugins
+            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+            'org.springframework',
+            'org.hibernate',
+            'net.sf.ehcache.hibernate'
+
+    environments {
+        development {
+            info 'org.hibernate'
+            info 'org.springframework.security'
+            debug 'org.springframework.web.servlet'
+            info 'com.tekdays'
+        }
+    }}

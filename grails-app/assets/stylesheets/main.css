@@ -108,7 +108,7 @@ img {
 }
 
 .footer {
-	background: #abbf78;
+	background: #ff0000;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
@@ -118,7 +118,7 @@ img {
 }
 
 .footer a {
-	color: #255b17;
+	color: #ff0000;
 }
 
 .spinner {
@@ -283,7 +283,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .required-indicator {
-	color: #48802C;
+	color: #ff0000;
 	display: inline-block;
 	font-weight: bold;
 	margin-left: 0.3em;
@@ -476,7 +476,7 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-	background: #E1F2B6;
+	background: #da8787;
 }
 
 /* PAGINATION */
