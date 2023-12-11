@@ -42,20 +42,20 @@ body {
 	margin: 0 auto;
 	max-width: 960px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
-	   -moz-box-shadow: 0 0 0.3em #255b17;
-	-webkit-box-shadow: 0 0 0.3em #255b17;
-	        box-shadow: 0 0 0.3em #255b17;
+	   -moz-box-shadow: 0 0 0.3em #56175b;
+	-webkit-box-shadow: 0 0 0.3em #56175b;
+	        box-shadow: 0 0 0.3em #56175b;
 }
 
 #grailsLogo {
-	background-color: #abbf78;
+	background-color: #da8787;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
 .ie6 body,
 .ie7 body,
 .ie8 body {
-	border-color: #255b17;
+	border-color: #56175b;
 	border-style: solid;
 	border-width: 0 1px;
 }
@@ -65,7 +65,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+	color: #56175b;
 }
 
 a:hover, a:active {
@@ -73,7 +73,7 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #48802c;
+	color: #56175b;
 	font-weight: normal;
 	font-size: 1.25em;
 	margin: 0.8em 0 0.3em 0;
@@ -108,7 +108,7 @@ img {
 }
 
 .footer {
-	background: #ff0000;
+	background: #56175b;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
@@ -118,7 +118,7 @@ img {
 }
 
 .footer a {
-	color: #ff0000;
+	color: #56175b;
 }
 
 .spinner {
@@ -283,7 +283,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .required-indicator {
-	color: #ff0000;
+	color: #56175b;
 	display: inline-block;
 	font-weight: bold;
 	margin-left: 0.3em;
@@ -346,7 +346,7 @@ fieldset.embedded legend {
 .errors {
 	background: #fff3f3;
 	border: 1px solid #ffaaaa;
-	color: #cc0000;
+	color: #56175b;
 	   -moz-box-shadow: 0 0 0.25em #ff8888;
 	-webkit-box-shadow: 0 0 0.25em #ff8888;
 	        box-shadow: 0 0 0.25em #ff8888;
@@ -373,7 +373,7 @@ fieldset.embedded legend {
 .error input, .error select, .error textarea {
 	background: #fff3f3;
 	border-color: #ffaaaa;
-	color: #cc0000;
+	color: #56175b;
 }
 
 .error input:focus, .error select:focus, .error textarea:focus {
@@ -387,7 +387,7 @@ fieldset.embedded legend {
 input:invalid, select:invalid, textarea:invalid {
 	background: #fff3f3;
 	border-color: #ffaaaa;
-	color: #cc0000;
+	color: #56175b;
 }
 
 input:invalid:focus, select:invalid:focus, textarea:invalid:focus {

@@ -194,15 +194,9 @@
           <root url="jar://$USER_HOME$/.sdkman/candidates/grails/2.5.6/dist/grails-docs-2.5.6.jar!/" />
           <root url="jar://$USER_HOME$/.sdkman/candidates/grails/2.5.6/dist/grails-scripts-2.5.6.jar!/" />
           <root url="jar://$USER_HOME$/.sdkman/candidates/grails/2.5.6/lib/bouncycastle/bcmail-jdk14/jars/bcmail-jdk14-138.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/7.0.70/tomcat-embed-core-7.0.70.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina-ant/7.0.70/tomcat-catalina-ant-7.0.70.jar!/" />
           <root url="jar://$USER_HOME$/.sdkman/candidates/grails/2.5.6/lib/org.grails/grails-gdoc-engine/jars/grails-gdoc-engine-1.0.1.jar!/" />
           <root url="jar://$USER_HOME$/.sdkman/candidates/grails/2.5.6/lib/org.yaml/snakeyaml/jars/snakeyaml-1.8.jar!/" />
           <root url="jar://$USER_HOME$/.sdkman/candidates/grails/2.5.6/lib/org.xhtmlrenderer/core-renderer/jars/core-renderer-R8.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-websocket/7.0.70/tomcat-embed-websocket-7.0.70.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-el/7.0.70/tomcat-embed-el-7.0.70.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.70/tomcat-embed-jasper-7.0.70.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar!/" />
         </CLASSES>
         <JAVADOC />

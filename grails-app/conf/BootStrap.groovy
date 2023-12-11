@@ -121,6 +121,16 @@ class BootStrap {
                 sponsor: s2,
                 contributionType: 'Venue',
                 description: 'Will be paying for the Moscone').save()
+
+        def tekEvent = TekEvent.get(48);
+        def tekMessage = new TekMessage(
+                subject:"Some subject",
+                content:"Some content",
+                parent:null,
+                event:tekEvent,
+                author:user1
+        )
+        tekMessage.save()
     }
     def destroy = {
     }
