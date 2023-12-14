@@ -50,25 +50,30 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         runtime 'mysql:mysql-connector-java:5.1.29'
-        runtime 'org.slf4j:slf4j-api:1.7.21'
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
+
+        runtime 'org.slf4j:slf4j-api:1.7.21'
+        compile('org.hibernate:hibernate-envers:4.3.11.Final') {
+            transitive = false
+        }
+
     }
 
     plugins {
         // plugins for the build system only
-        build ":tomcat:7.0.70" // or ":tomcat:8.0.22"
+        build ":tomcat:8.0.22" // or ":tomcat:8.0.22"
 
         // plugins for the compile step
         compile ":scaffolding:2.1.2"
         compile ':cache:1.1.8'
         // asset-pipeline 2.0+ requires Java 7, use version 1.9.x with Java 6
         compile ":asset-pipeline:2.5.7"
-        //compile ":searchable:0.6.6"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.10" // or ":hibernate:3.6.10.18"
         runtime ":database-migration:1.4.0"
+
         runtime ":jquery:1.11.1"
 
         // Uncomment these to enable additional asset-pipeline capabilities
