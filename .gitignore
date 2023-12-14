@@ -52,3 +52,5 @@ lib/build/
 coverage-error.log
 bin/
 
+/.slcache/
+/.idea/
