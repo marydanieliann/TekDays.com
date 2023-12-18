@@ -17,9 +17,8 @@
         <asset:stylesheet src="application.css"/>
         <asset:javascript src="application.js"/>
         <g:layoutHead/>
-    <g:layoutHead/>
-    <r:layoutResources/>
-</head>
+        <r:layoutResources/>
+    </head>
 
 <body>
 <div id="logo" role="banner"><a href="${createLink(uri: '/')}">

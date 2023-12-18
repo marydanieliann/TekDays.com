@@ -1,5 +1,8 @@
 package com.tekdays
 
+import org.hibernate.envers.Audited
+
+@Audited
 class TekEvent {
     String city
     String name
@@ -10,6 +13,7 @@ class TekEvent {
     Date startDate
     Date endDate
     String description
+    String nickname
     static searchable = true
     //one to many relationship
     static hasMany = [volunteers  : TekUser, respondents: String,
@@ -30,7 +34,8 @@ class TekEvent {
         volunteers nullable: true
         sponsorships nullable: true
         tasks nullable: true
-      //  messages nullable: true
+        messages nullable: true
+        nickname nullable: true
     }
 
 

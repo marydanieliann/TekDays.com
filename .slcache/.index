@@ -5480,3 +5480,13 @@ n:351:org/apache/tomcat/JarScannerCallback
 n:1749:org/codehaus/groovy/transform/stc/PropertyLookupVisitor
 n:5627:org/codehaus/groovy/transform/sc/transformers/ConstructorCallTransformer$MapStyleConstructorCall
 n:1564:org/codehaus/groovy/transform/sc/transformers/ConstructorCallTransformer$MapStyleConstructorCall$1
+n:2661:BuildConfig$_run_closure1$_closure5
+n:3192:BuildConfig$_run_closure1$_closure5
+n:927:org/hibernate/envers/Audited
+n:1109:org/hibernate/envers/RelationTargetAuditMode
+n:1006:org/hibernate/envers/ModificationStore
+n:15379:org/codehaus/groovy/grails/web/util/WebUtils
+n:180:org/hibernate/envers/RevisionListener
+n:585:org/hibernate/envers/RevisionEntity
+n:421:org/hibernate/envers/RevisionTimestamp
+n:415:org/hibernate/envers/RevisionNumber
