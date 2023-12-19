@@ -7,9 +7,19 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class TekEventController {
+    def datatablesSourceService
     def taskService
     private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+
+    def dtList() {}
+
+    def dataTablesRenderer() {
+        def propertiesToRender = ['name', 'city', 'organizer', 'id']
+        def entityName = 'TekEvent'
+        render datatablesSourceService.dataTablesSource(propertiesToRender, entityName, params)
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -79,7 +89,6 @@ class TekEventController {
     }
 
     @Transactional
-
     def update(TekEvent tekEventInstance) {
         if (tekEventInstance == null) {
             notFound()

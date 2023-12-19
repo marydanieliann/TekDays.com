@@ -1,7 +1,4 @@
-<%
-    //default is set to US
-System.out.println(request.locale)
-%>
+
 <%@ page import="com.tekdays.TekEvent" %>
 <!DOCTYPE html>
 <html>
@@ -64,7 +61,7 @@ System.out.println(request.locale)
 				<td>${fieldValue(bean: tekEventInstance,
 						field: "venue")}</td>
 				<td><g:formatDate
-						date="${tekEventInstance.startDate}" />
+						date="${tekEventInstance.startDate}" format="dd-MM-yyyy" />
 				</td>
 			</tr>
 		</g:each>

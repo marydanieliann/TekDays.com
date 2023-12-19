@@ -1,14 +1,23 @@
 package com.tekdays
+
+import org.hibernate.SessionFactory
+import org.hibernate.envers.AuditReaderFactory
+import org.hibernate.envers.query.AuditQuery
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class TaskController {
-
+    SessionFactory sessionFactory
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Task.list(params), model:[taskInstanceCount: Task.count()]
+        respond Task.list(params), model: [taskInstanceCount: Task.count()]
     }
 
     def show(Task taskInstance) {
@@ -27,11 +36,11 @@ class TaskController {
         }
 
         if (taskInstance.hasErrors()) {
-            respond taskInstance.errors, view:'create'
+            respond taskInstance.errors, view: 'create'
             return
         }
 
-        taskInstance.save flush:true
+        taskInstance.save flush: true
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'task.label', default: 'Task'), taskInstance.id])
@@ -53,18 +62,18 @@ class TaskController {
         }
 
         if (taskInstance.hasErrors()) {
-            respond taskInstance.errors, view:'edit'
+            respond taskInstance.errors, view: 'edit'
             return
         }
 
-        taskInstance.save flush:true
+        taskInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Task.label', default: 'Task'), taskInstance.id])
                 redirect taskInstance
             }
-            '*'{ respond taskInstance, [status: OK] }
+            '*' { respond taskInstance, [status: OK] }
         }
     }
 
@@ -76,14 +85,14 @@ class TaskController {
             return
         }
 
-        taskInstance.delete flush:true
+        taskInstance.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Task.label', default: 'Task'), taskInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -93,7 +102,17 @@ class TaskController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'task.label', default: 'Task'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
+
+    def revisions() {
+        List listOfAudited = AuditReaderFactory
+                .get(sessionFactory.currentSession)
+                .createQuery()
+                .forRevisionsOfEntity(Task.class, true, true).getResultList()
+
+        List result = listOfAudited
+        LOGGER.info(result as String)
+        }
 }

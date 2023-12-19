@@ -230,14 +230,12 @@
         </g:form>
     </div>
 
-    %{--   <g:form name="messageForm" action="create">
-           <f:display bean="tekEventInstance">
-               <f:field property="id"/>
+%{--       <g:form name="messageForm" action="show">
+           <f:display bean="tekEventInstance" property="id"/>
+           --}%%{--    <f:field property="id"/>
                <f:field property="city"/>
-               <f:field property="description"/>
-           </f:display>
+               <f:field property="description"/>--}%%{--
        </g:form>--}%
-
     %{-- <f:display bean="tekEventInstance" property="startDate"/>
        --}%%{--  <g:formatDate format="dd MMM yyyy" date="${value}"/>
      </f:display>--}%
@@ -246,10 +244,11 @@
      <f:field bean="tekEventInstance" property="startDate" format="dd/MM/yyyy" />
     --}%
 
-
-   %{-- <g:widget bean="${tekEventInstance}">
+%{--
+    <f:widget bean="${tekEventInstance}">
         <f:field property="startDate" format="dd/MM/yyyy"/>
-    </g:widget>--}%
+    </f:widget>
+    --}%
 </div>
 </body>
 </html>

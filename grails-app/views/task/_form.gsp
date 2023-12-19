@@ -23,7 +23,13 @@
 		<g:message code="task.assignedTo.label" default="Assigned To" />
 
 	</label>
-	<g:select id="assignedTo" name="assignedTo.id" from="${com.tekdays.TekUser.list()}" optionKey="id" value="${taskInstance?.assignedTo?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="assignedTo"
+			  name="assignedTo.id"
+			  from="${com.tekdays.TekUser.list()}"
+			  optionKey="id"
+			  value="${taskInstance?.assignedTo?.id}"
+			  class="many-to-one"
+			  noSelection="['null': '']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'dueDate', 'error')} ">
@@ -39,11 +45,16 @@
 		<g:message code="task.event.label" default="Event" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="event" name="event.id" from="${com.tekdays.TekEvent.list()}" optionKey="id" required="" value="${taskInstance?.event?.id}" class="many-to-one"/>
+	<g:select id="event"
+			  name="event.id"
+			  from="${com.tekdays.TekEvent.list()}"
+			  optionKey="id"
+			  required=""
+			  value="${taskInstance?.event?.id}"
+			  class="many-to-one"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'completed',
-		'error')} ">
+<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'completed', 'error')} ">
 	<label for="completed">
 		<g:message code="task.completed.label" default="Completed" />
 

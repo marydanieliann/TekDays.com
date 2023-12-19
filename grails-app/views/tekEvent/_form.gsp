@@ -31,7 +31,13 @@
 		<g:message code="tekEvent.organizer.label" default="Organizer" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="organizer" name="organizer.id" from="${com.tekdays.TekUser.list()}" optionKey="id" required="" value="${tekEventInstance?.organizer?.id}" class="many-to-one"/>
+	<g:select id="organizer"
+			  name="organizer.id"
+			  from="${com.tekdays.TekUser.list()}"
+			  optionKey="id"
+			  required=""
+			  value="${tekEventInstance?.organizer?.id}"
+			  class="many-to-one"/>
 
 </div>
 
@@ -69,7 +75,13 @@
 		<g:message code="tekEvent.volunteers.label" default="Volunteers" />
 		
 	</label>
-	<g:select name="volunteers" from="${com.tekdays.TekUser.list()}" multiple="multiple" optionKey="id" size="5" value="${tekEventInstance?.volunteers*.id}" class="many-to-many"/>
+	<g:select name="volunteers"
+			  from="${com.tekdays.TekUser.list()}"
+			  multiple="multiple"
+			  optionKey="id"
+			  size="5"
+			  value="${tekEventInstance?.volunteers*.id}"
+			  class="many-to-many"/>
 
 </div>
 
@@ -81,7 +93,9 @@
 	
 <ul class="one-to-many">
 <g:each in="${tekEventInstance?.sponsorships?}" var="s">
-    <li><g:link controller="sponsorship" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+    <li><g:link controller="sponsorship"
+				action="show"
+				id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
 <g:link controller="sponsorship" action="create" params="['tekEvent.id': tekEventInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'sponsorship.label', default: 'Sponsorship')])}</g:link>
@@ -137,4 +151,8 @@
 	
 
 </div>
+
+
+
+
 
