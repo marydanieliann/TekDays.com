@@ -2,14 +2,20 @@ package com.tekdays
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+@Transactional()
 class SponsorController {
-
+    def datatablesSourceService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Sponsor.list(params), model:[sponsorInstanceCount: Sponsor.count()]
+    }
+
+    def dataTablesRenderer() {
+        def propertiesToRender = ["name", "website", "description", "id", "id"]
+        def entityName = 'Sponsor'
+        render datatablesSourceService.dataTablesSource(propertiesToRender, entityName, params)
     }
 
     def show(Sponsor sponsorInstance) {

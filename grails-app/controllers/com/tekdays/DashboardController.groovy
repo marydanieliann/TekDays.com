@@ -4,6 +4,7 @@ class DashboardController {
 
     def index() {}
 
+
     def dashboard = {
         def eventId = params.id as Long
         if (!eventId) {

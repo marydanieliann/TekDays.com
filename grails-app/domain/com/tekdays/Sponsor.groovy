@@ -8,7 +8,7 @@ class Sponsor {
     String website
     String description
     byte[] logo
-
+    Boolean deleted=false
     static hasMany = [sponsorships: Sponsorship]
     static belongsTo = TekEvent
 

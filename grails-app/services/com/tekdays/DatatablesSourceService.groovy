@@ -5,12 +5,14 @@ import grails.transaction.Transactional
 import org.codehaus.groovy.grails.commons.GrailsApplication
 import org.codehaus.groovy.grails.plugins.support.aware.GrailsApplicationAware
 
-@Transactional(readOnly = true)
+@Transactional
 class DatatablesSourceService implements GrailsApplicationAware {
+
     GrailsApplication grailsApplication
 
     def dataTablesSource(propertiesToRender, entityName, params) {
         boolean someFilter = false
+
         Class clazz = grailsApplication.domainClasses.find { it.clazz.simpleName == entityName }.clazz
 
         def filters = []
@@ -29,13 +31,14 @@ class DatatablesSourceService implements GrailsApplicationAware {
         def filter = filters.join(" OR ")
 
         def dataToRender = [:]
+
         dataToRender.sEcho = params.sEcho
         dataToRender.aaData = []  // Array of data.
 
         dataToRender.iTotalRecords = clazz.count()
         dataToRender.iTotalDisplayRecords = dataToRender.iTotalRecords
 
-        def query = new StringBuilder("from ${entityName} as dt where dt.id is not null")
+        def query = new StringBuilder("from ${entityName} as dt where dt.id is not null and dt.deleted=false")
         def appendToQuery = ""
 
         query.append(appendToQuery)
@@ -51,6 +54,7 @@ class DatatablesSourceService implements GrailsApplicationAware {
                 orderBy.append(",")
             }
             def sortDir = params["sSortDir_${it}"]?.equalsIgnoreCase('asc') ? 'asc' : 'desc'
+
             def sortProperty = propertiesToRender[params["iSortCol_${it}"] as int]
             orderBy.append("dt.${sortProperty} ${sortDir}")
         }
@@ -98,4 +102,3 @@ class DatatablesSourceService implements GrailsApplicationAware {
         return dataToRender as JSON
     }
 }
-

@@ -10,6 +10,7 @@ class TekMessage {
     TekMessage parent
     // TekEvent event
     TekUser author
+    Boolean deleted=false
 
     static belongsTo = [event: TekEvent]
 

@@ -9,6 +9,8 @@ class Sponsorship {
     String contributionType
     String description
     String notes
+    Boolean deleted=false
+
     static constraints = {
         event nullable: false
         sponsor nullable: false

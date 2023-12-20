@@ -11,6 +11,7 @@ class TekUser {
     String email
     String website
     String bio
+    Boolean deleted=false
 
     String toString() { fullName }
     static constraints = {

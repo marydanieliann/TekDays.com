@@ -10,6 +10,7 @@ class Task {
     Date dueDate
     TekEvent event
     Boolean completed
+    Boolean deleted=false
     static constraints = {
         title blank: false
         notes blank: true, nullable: true, maxSize: 5000

@@ -6,6 +6,74 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'task.label', default: 'Task')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<g:javascript>
+		$(document).ready(function() {
+			$('#dt').DataTable({
+				sScrollY: "75%",
+				sScrollX: "100%",
+				bProcessing: true,
+				bServerSide: true,
+				sAjaxSource: "/TekDays.com/task/dataTablesRenderer",
+				bJQueryUI: false,
+				bAutoWidth: false,
+				sPaginationType: "full_numbers",
+				aLengthMenu: [5,10,25,50,100,200],
+				iDisplayLength: 10,
+				aoColumnDefs: [
+                    {
+                        render: function (data, type, full, meta) {
+                            if (full[4]) {
+                                return '<a href="${createLink(controller: 'Task', action: 'show')}/' + full[4] + '"class="btn">' + data + '</a>';
+                            } else {
+                                return data;
+                            }
+                        },
+                        aTargets: [0],
+                        visible: true,
+                        bSearchable: true,
+                        bSortable: true
+                    },
+                    {
+                        createdCell: function (td, cellData, rowData, row, col) {
+                            $(td).attr('style', 'color: #423F3FFF');
+                        },
+                        aTargets: [1, 2],
+                        bSearchable: false,
+                        bSortable: false,
+                        visible: true
+                    },
+                    {
+					createdCell: function ( td, cellData, rowData, row, col) {
+						$(td).attr('style','text-align: left;');
+					},
+					render: function ( data, type, full, meta ) {
+						if (data) {
+							return '<a href="edit/' + data + '" class="btn"> <i class="fas fa-edit" > Edit </i> </a>';
+						} else {
+							return "";
+						}
+					},
+					aTargets: 3,
+					bSortable: false
+				},
+					{
+						createdCell: function (td, cellData, rowData, row, col) {
+							$(td).attr('style', 'text-align: left;');
+						},
+						render: function (data, type, full, meta) {
+							if (data) {
+								return '<a href="" class="btn">Delete</a>';
+							} else {
+								return "";
+							}
+						},
+						aTargets: 4,
+						bSortable: false,
+						}
+				]
+			});
+		});
+		</g:javascript>
 	</head>
 	<body>
 		<a href="#list-task" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -15,48 +83,27 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
-		<div id="list-task" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-			<thead>
-					<tr>
-					
-						<g:sortableColumn property="title" title="${message(code: 'task.title.label', default: 'Title')}" />
-					
-						<g:sortableColumn property="notes" title="${message(code: 'task.notes.label', default: 'Notes')}" />
-					
-						<th><g:message code="task.assignedTo.label" default="Assigned To" /></th>
-					
-						<g:sortableColumn property="dueDate" title="${message(code: 'task.dueDate.label', default: 'Due Date')}" />
-					
-						<th><g:message code="task.event.label" default="Event" /></th>
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${taskInstanceList}" status="i" var="taskInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${taskInstance.id}">${fieldValue(bean: taskInstance, field: "title")}</g:link></td>
-					
-						<td>${fieldValue(bean: taskInstance, field: "notes")}</td>
-					
-						<td>${fieldValue(bean: taskInstance, field: "assignedTo")}</td>
-					
-						<td><g:formatDate date="${taskInstance.dueDate}" /></td>
-					
-						<td>${fieldValue(bean: taskInstance, field: "event")}</td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${taskInstanceCount ?: 0}" />
-			</div>
-		</div>
+
+	<table class="display compact" id="dt">
+		<thead>
+		<tr>
+			<th>Title</th>
+			<th>Assigned to</th>
+			<th>Due Date</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		</thead>
+		<tbody></tbody>
+		<tfoot>
+		<tr>
+			<th>Title</th>
+			<th>Assigned to</th>
+			<th>Due Date</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		</tfoot>
+	</table>
 	</body>
 </html>

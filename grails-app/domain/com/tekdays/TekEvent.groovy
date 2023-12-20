@@ -14,6 +14,7 @@ class TekEvent {
     Date endDate
     String description
     String nickname
+    Boolean deleted = false
     static searchable = true
     //one to many relationship
     static hasMany = [volunteers  : TekUser, respondents: String,

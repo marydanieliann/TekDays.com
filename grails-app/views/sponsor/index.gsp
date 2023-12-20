@@ -6,6 +6,74 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'sponsor.label', default: 'Sponsor')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<g:javascript>
+		$(document).ready(function() {
+			$('#dt').DataTable({
+				sScrollY: "75%",
+				sScrollX: "100%",
+				bProcessing: true,
+				bServerSide: true,
+				sAjaxSource: "/TekDays.com/sponsor/dataTablesRenderer",
+				bJQueryUI: false,
+				bAutoWidth: false,
+				sPaginationType: "full_numbers",
+				aLengthMenu: [5,10,25,50,100,200],
+				iDisplayLength: 10,
+				aoColumnDefs: [
+                    {
+                        render: function (data, type, full, meta) {
+                            if (full[4]) {
+                                return '<a href="${createLink(controller: 'Sponsor', action: 'show')}/' + full[4] + '"class="btn">' + data + '</a>';
+                            } else {
+                                return data;
+                            }
+                        },
+                        aTargets: [0],
+                        visible: true,
+                        bSearchable: true,
+                        bSortable: true
+                    },
+                    {
+                        createdCell: function (td, cellData, rowData, row, col) {
+                            $(td).attr('style', 'color: #423F3FFF');
+                        },
+                        aTargets: [1, 2],
+                        bSearchable: false,
+                        bSortable: false,
+                        visible: true
+                    },
+                    {
+					createdCell: function ( td, cellData, rowData, row, col) {
+						$(td).attr('style','text-align: left;');
+					},
+					render: function ( data, type, full, meta ) {
+						if (data) {
+							return '<a href="edit/' + data + '" class="btn"> <i class="fas fa-edit" > Edit </i> </a>';
+						} else {
+							return "";
+						}
+					},
+					aTargets: 3,
+					bSortable: false
+				},
+					{
+						createdCell: function (td, cellData, rowData, row, col) {
+							$(td).attr('style', 'text-align: left;');
+						},
+						render: function (data, type, full, meta) {
+							if (data) {
+								return '<a href="" class="btn">Delete</a>';
+							} else {
+								return "";
+							}
+						},
+						aTargets: 4,
+						bSortable: false,
+						}
+				]
+			});
+		});
+		</g:javascript>
 	</head>
 	<body>
 		<a href="#list-sponsor" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -15,44 +83,27 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
-		<div id="list-sponsor" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-			<thead>
-					<tr>
-					
-						<g:sortableColumn property="name" title="${message(code: 'sponsor.name.label', default: 'Name')}" />
-					
-						<g:sortableColumn property="website" title="${message(code: 'sponsor.website.label', default: 'Website')}" />
-					
-						<g:sortableColumn property="description" title="${message(code: 'sponsor.description.label', default: 'Description')}" />
-					
-						<g:sortableColumn property="logo" title="${message(code: 'sponsor.logo.label', default: 'Logo')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${sponsorInstanceList}" status="i" var="sponsorInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${sponsorInstance.id}">${fieldValue(bean: sponsorInstance, field: "name")}</g:link></td>
-					
-						<td>${fieldValue(bean: sponsorInstance, field: "website")}</td>
-					
-						<td>${fieldValue(bean: sponsorInstance, field: "description")}</td>
-					
-						<td>${fieldValue(bean: sponsorInstance, field: "logo")}</td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${sponsorInstanceCount ?: 0}" />
-			</div>
-		</div>
+
+	<table class="display compact" id="dt">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Website</th>
+			<th>Description</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		</thead>
+		<tbody></tbody>
+		<tfoot>
+		<tr>
+			<th>Name</th>
+			<th>Website</th>
+			<th>Description</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		</tfoot>
+	</table>
 	</body>
 </html>

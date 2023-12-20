@@ -11,6 +11,7 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class TaskController {
+    def datatablesSourceService
     SessionFactory sessionFactory
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
@@ -20,6 +21,11 @@ class TaskController {
         respond Task.list(params), model: [taskInstanceCount: Task.count()]
     }
 
+    def dataTablesRenderer() {
+        def propertiesToRender = ["title", "assignedTo", "dueDate" ,"id", "id"]
+        def entityName = 'Task'
+        render datatablesSourceService.dataTablesSource(propertiesToRender, entityName, params)
+    }
     def show(Task taskInstance) {
         respond taskInstance
     }

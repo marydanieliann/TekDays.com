@@ -5,8 +5,14 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class SponsorshipController {
-
+    def datatablesSourceService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+    def dataTablesRenderer() {
+        def propertiesToRender = ['event','sponsor', 'contributionType', 'id','id']
+        def entityName = 'Sponsorship'
+        render datatablesSourceService.dataTablesSource(propertiesToRender, entityName, params)
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -27,14 +33,11 @@ class SponsorshipController {
             notFound()
             return
         }
-
         if (sponsorshipInstance.hasErrors()) {
             respond sponsorshipInstance.errors, view:'create'
             return
         }
-
         sponsorshipInstance.save flush:true
-
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'sponsorship.label', default: 'Sponsorship'), sponsorshipInstance.id])
@@ -54,14 +57,11 @@ class SponsorshipController {
             notFound()
             return
         }
-
         if (sponsorshipInstance.hasErrors()) {
             respond sponsorshipInstance.errors, view:'edit'
             return
         }
-
         sponsorshipInstance.save flush:true
-
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Sponsorship.label', default: 'Sponsorship'), sponsorshipInstance.id])
@@ -73,14 +73,11 @@ class SponsorshipController {
 
     @Transactional
     def delete(Sponsorship sponsorshipInstance) {
-
         if (sponsorshipInstance == null) {
             notFound()
             return
         }
-
         sponsorshipInstance.delete flush:true
-
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Sponsorship.label', default: 'Sponsorship'), sponsorshipInstance.id])

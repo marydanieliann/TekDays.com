@@ -20,16 +20,33 @@
                 iDisplayLength: 10,
                 aoColumnDefs: [{
                     createdCell: function ( td, cellData, rowData, row, col) {
-                        $(td).attr('style','text-align: center;');
+                        $(td).attr('style','text-align: left;');
                     },
                     render: function ( data, type, full, meta ) {
                         if (data) {
-                            return '<a href="edit/' + data + '" class="btn">Edit</a>';
+                            return '<a href="edit/' + data + '" class="btn"> <i class="fas fa-edit" > Edit </i> </a>';
                         } else {
                             return "";
                         }
                     },
-                }]
+                    aTargets: 3,
+                    bSortable: false
+                    },
+                    {
+                        createdCell: function (td, cellData, rowData, row, col) {
+                            $(td).attr('style', 'text-align: left;');
+                        },
+                        render: function (data, type, full, meta) {
+                            if (data) {
+                                return '<a href="" class="btn">Delete</a>';
+                            } else {
+                                return "";
+                            }
+                        },
+                        aTargets: 4,
+                        bSortable: false
+                    },
+                ]
             });
         });
     </g:javascript>
@@ -40,8 +57,9 @@
     <tr>
         <th>Name</th>
         <th>City</th>
-        <th>Organizer</th>
+        <th>Description</th>
         <th>Edit</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody></tbody>
@@ -49,8 +67,9 @@
     <tr>
         <th>Name</th>
         <th>City</th>
-        <th>Organizer</th>
+        <th>Description</th>
         <th>Edit</th>
+        <th>Delete</th>
     </tr>
     </tfoot>
 </table>
