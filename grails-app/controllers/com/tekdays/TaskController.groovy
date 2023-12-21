@@ -77,7 +77,7 @@ class TaskController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Task.label', default: 'Task'), taskInstance.id])
-                redirect taskInstance
+                redirect view:'index'
             }
             '*' { respond taskInstance, [status: OK] }
         }

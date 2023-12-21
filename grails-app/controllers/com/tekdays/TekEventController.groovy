@@ -118,7 +118,7 @@ class TekEventController {
                 flash.message = message(code: 'default.updated.message',
                         args: [message(code: 'TekEvent.label', default: 'TekEvent'),
                                tekEventInstance.id])
-                redirect tekEventInstance
+                redirect view: 'index'
             }
             '*' { respond tekEventInstance, [status: OK] }
         }

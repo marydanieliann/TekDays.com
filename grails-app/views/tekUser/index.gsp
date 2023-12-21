@@ -21,9 +21,8 @@
 				aoColumnDefs: [
                     {
                         render: function (data, type, full, meta) {
-                            if (full[3]) {
-                                console.log(full[3]);
-                                return '<a href="${createLink(controller: 'TekUser', action: 'show')}/' + full[3] + '"class="btn">' + data + '</a>';
+                            if (full[4]) {
+                                return '<a href="${createLink(controller: 'TekUser', action: 'show')}/' + full[4] + '"class="btn">' + data + '</a>';
                             } else {
                                 return data;
                             }
@@ -55,21 +54,21 @@
 					},
 					aTargets: 3,
 					bSortable: false
-				}/*,
-					{
+				},
+				{
 						createdCell: function (td, cellData, rowData, row, col) {
 							$(td).attr('style', 'text-align: left;');
 						},
 						render: function (data, type, full, meta) {
 							if (data) {
-								return '<a href="" class="btn">Delete</a>';
+								return '<a href="revision/' + data + '" class="btn">Revisions</a>';
 							} else {
 								return "";
 							}
 						},
 						aTargets: 4,
 						bSortable: false,
-						}*/
+						}
 				]
 			});
 		});
@@ -90,6 +89,7 @@
 			<th>Website</th>
 			<th>Email</th>
 			<th>Edit</th>
+			<th>Revisions</th>
 		</tr>
 		</thead>
 		<tbody></tbody>
@@ -99,6 +99,7 @@
 			<th>Website</th>
 			<th>Email</th>
 			<th>Edit</th>
+			<th>Revisions</th>
 		</tr>
 		</tfoot>
 	</table>

@@ -56,7 +56,7 @@ class TekMessageController {
                 flash.message = message(code: 'default.created.message',
                         args: [message(code: 'tekMessageInstance.label',
                                 default: 'TekMessage'), tekMessageInstance.id])
-                redirect tekMessageInstance
+                redirect view:'index'
             }
             '*' { respond tekMessageInstance, [status: CREATED] }
         }

@@ -1,14 +1,15 @@
 package com.tekdays
-import grails.transaction.Transactional
 import org.hibernate.SessionFactory
 import org.hibernate.envers.AuditReaderFactory
 import grails.transaction.Transactional
+import java.util.stream.Collectors
+import org.hibernate.envers.query.AuditEntity
 
 @Transactional
 class EnversService {
     SessionFactory sessionFactory
 
-    def getAuditedByRevisionId(Class clazz, int rev) {
+    def getAuditedByRevisionId(Class clazz, Long rev) {
         List listOfAudited = AuditReaderFactory
                 .get(sessionFactory.currentSession)
                 .createQuery()
@@ -17,13 +18,15 @@ class EnversService {
         return result
     }
 
-    List getAuditedByEntityId(Class clazz, int id) {
+    List<TekUser> getAuditedByEntityId(Class<TekUser> clazz, Long id) {
         List listOfAudited = AuditReaderFactory
                 .get(sessionFactory.currentSession)
                 .createQuery()
-                .forRevisionsOfEntity(clazz, true, true).getResultList()
-        List result = listOfAudited?.stream()?.filter({ val -> val.id == id })?.collect(Collectors.toList()) as List
-        return result
+                .forRevisionsOfEntity(clazz, true, true)
+                .add(AuditEntity.id().eq(id))
+                .getResultList()
+
+        return listOfAudited
     }
 
     List getAllAudited(Class clazz) {
@@ -40,6 +43,7 @@ class EnversService {
                 .get(sessionFactory.currentSession)
                 .createQuery()
                 .forRevisionsOfEntity(clazz, true, false).resultList
+
         List result = listOfAudited
         return result
     }

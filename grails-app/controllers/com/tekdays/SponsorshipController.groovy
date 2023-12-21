@@ -41,7 +41,7 @@ class SponsorshipController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'sponsorship.label', default: 'Sponsorship'), sponsorshipInstance.id])
-                redirect sponsorshipInstance
+                redirect view:'index'
             }
             '*' { respond sponsorshipInstance, [status: CREATED] }
         }

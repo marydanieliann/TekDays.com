@@ -22,8 +22,8 @@
 
 <body>
 <div id="logo" role="banner"><a href="${createLink(uri: '/')}">
-    <img src="${resource(dir: 'images', file: 'images.png')}"
-         alt="TekDays" style="width:1780px; height: 400px; "/></a>
+    <img src="${resource(dir: 'images', file: 'tek-dayslogo.png')}"
+         alt="TekDays" style="width:auto; height: auto; margin-left: -20px"/></a>
     <g:loginToggle/>
 </div>
 <g:layoutBody/>

@@ -6,7 +6,7 @@
 	<title><g:message code="default.list.label" args="[entityName]" /></title>
 	<g:javascript>
 		$(document).ready(function() {
-			$('#dt').DataTable({
+			var table = $('#dt').DataTable({
 				sScrollY: "75%",
 				sScrollX: "100%",
 				bProcessing: true,
@@ -40,32 +40,12 @@
                         bSortable: false,
                         visible: true
                     },
-                    {
+                   {
 					createdCell: function ( td, cellData, rowData, row, col) {
 						$(td).attr('style','text-align: left;');
 					},
 					render: function ( data, type, full, meta ) {
 						if (data) {
-                            $(document).on('click', '.edit_btn', function () {
-								var buttonId = $(this).data('id');
-								$.ajax({
-									type: "POST",
-									url: "/TekDays.com/tekEvent/edit",
-									data: {
-										id: buttonId
-									},
-									success: function (result) {
-										if (result.message) {
-                           					 window.location.href = "${createLink(controller: 'tekEvent', action: 'index')}";
-										} else {
-											console.log(result.message);
-										}
-									},
-									error: function (xhr, status, error) {
-										console.log(error);
-									}
-								});
-							});
 							return '<a href="edit/' + data + '" class="edit_btn"> <i class="fas fa-edit" > Edit </i> </a>';
 						} else {
 							return "";
@@ -74,44 +54,52 @@
 					aTargets: 3,
 					bSortable: false
 				},
-					{
+						{
 						createdCell: function (td, cellData, rowData, row, col) {
 							$(td).attr('style', 'text-align: left;');
 						},
 						render: function (data, type, full, meta) {
 							if (data) {
-                                $(document).on('click', '.delete_btn', function() {
-    							var buttonId = $(this).attr('id');
-									$.ajax({
-										type: "POST",
-										url: "/TekDays.com/tekEvent/deleted",
-										data: {
-											id: buttonId
-										},
-										success: function(result) {
-											if (result.message) {
-												location.reload()
-											} else {
-												alert(result.message)
-											}
-										},
-										error: function(xhr, status, error) {
-											console.log(error)
-										}
-									});
-								});
-								return '<button id="' + data + '" class="delete_btn">Delete</button>';
+								return '<button id="' + data + '" class="delete_btn" onclick="confirmDelete(\'' + data + '\')">Delete</button>';
 							} else {
 								return "";
 							}
 						},
 						aTargets: 4,
 						bSortable: false,
-						}
+					}
+
 				]
 			});
 		});
-	</g:javascript>
+
+	function confirmDelete(id) {
+						var confirmation = confirm("Are you sure you want to delete this TekEvent?");
+						if (confirmation) {
+							$.ajax({
+								type: "POST",
+								url: "/TekDays.com/tekEvent/deleted",
+								data: {
+									id: id
+								},
+								success: function(result) {
+									if (result.message) {
+									$('#dt').DataTable().ajax.reload();
+									  //  location.reload();
+									} else {
+										alert(result.message);
+									}
+								},
+								error: function(xhr, status, error) {
+									console.log(error);
+								}
+							});
+						} else {
+							// User clicked "Cancel", do nothing
+						}
+					}
+
+                    </g:javascript>
 </head>
 <body>
 <a href="#list-tekEvent" class="skip" tabindex="-1"><g:message
