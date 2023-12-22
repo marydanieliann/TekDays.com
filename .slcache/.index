@@ -5540,3 +5540,5 @@ n:2079:org/codehaus/groovy/grails/web/converters/Converter$CircularReferenceBeha
 n:6054:org/codehaus/groovy/grails/web/json/JSONWriter
 n:812:org/codehaus/groovy/grails/web/json/JSONException
 n:167:org/codehaus/groovy/grails/web/json/JSONElement
+n:1286:org/hibernate/envers/exception/RevisionDoesNotExistException
+n:1006:org/hibernate/envers/CrossTypeRevisionChangesReader
