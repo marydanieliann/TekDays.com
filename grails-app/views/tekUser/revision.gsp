@@ -17,7 +17,7 @@
     <thead>
     <tr>
         <th>Revision Type</th>
-        <th>Current UserName</th>
+        <th>Changed user</th>
         <th>Timestamp</th>
         <th>Bio</th>
         <th>Email</th>
@@ -42,7 +42,7 @@
             <g:if test="${!(row.revtype in [0, 1, 2])}">
                 <td>N/A</td>
             </g:if>
-            <td>${row.id ?: 'N/A'}</td>
+            <td>${row.current_name ?: 'N/A'}</td>
             <td>${row.timestamp ?: 'N/A'}</td>
             <td>${row.bio ?: 'N/A'}</td>
             <td>${row.email ?: 'N/A'}</td>
