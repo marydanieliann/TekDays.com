@@ -5554,3 +5554,6 @@ n:2460:script1703247483772372049868$_run_closure3$_closure6
 n:2775:script1703247483772372049868$_run_closure3$_closure6$_closure9
 n:3740:script1703247483772372049868$_run_closure3$_closure6$_closure9$_closure10
 n:1464:org/codehaus/groovy/runtime/callsite/StaticMetaMethodSite$StaticMetaMethodSiteNoUnwrap
+n:1106:org/grails/datastore/mapping/reflect/ClassPropertyFetcher$1
+y:1967:org/grails/datastore/mapping/reflect/ClassPropertyFetcher$GetterPropertyFetcher
+y:5602:org/grails/datastore/mapping/reflect/ReflectionUtils

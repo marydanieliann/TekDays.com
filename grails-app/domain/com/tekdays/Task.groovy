@@ -8,6 +8,8 @@ class Task {
     String notes
     TekUser assignedTo
     Date dueDate
+    Date dateCreated
+    Date dateUpdated
     TekEvent event
     Boolean completed
     Boolean deleted=false
@@ -18,5 +20,18 @@ class Task {
         dueDate nullable: true
         completed nullable: true
     }
+
+ /*   def beforeInsert() {
+        dateCreated = new Date()
+    }*/
+
+    def afterInsert(){
+        dateCreated = new Date()
+    }
+
+    def afterUpdate(){
+        dateUpdated = new Date()
+    }
+
     static belongsTo = TekEvent
 }

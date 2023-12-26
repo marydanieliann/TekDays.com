@@ -30,18 +30,7 @@
     <tbody>
     <g:each in="${result}" var="row">
         <tr>
-            <g:if test="${row.revtype == 0}">
-                <td>Created</td>
-            </g:if>
-            <g:if test="${row.revtype == 1}">
-                <td>Edited</td>
-            </g:if>
-            <g:if test="${row.revtype == 2}">
-                <td>Deleted</td>
-            </g:if>
-            <g:if test="${!(row.revtype in [0, 1, 2])}">
-                <td>N/A</td>
-            </g:if>
+            <td>${row.revtype?: 'N/A'}</td>
             <td>${row.current_name ?: 'N/A'}</td>
             <td>${row.timestamp ?: 'N/A'}</td>
             <td>${row.bio ?: 'N/A'}</td>
