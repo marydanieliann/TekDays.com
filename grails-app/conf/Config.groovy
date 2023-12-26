@@ -127,7 +127,10 @@ log4j = {
             'org.springframework',
             'org.hibernate',
             'net.sf.ehcache.hibernate'
-
+/*logger {
+    trace "org.hibernate.SQL",
+    "org.hibernate.type"
+}*/
 
     environments {
         development {
