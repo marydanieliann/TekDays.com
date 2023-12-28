@@ -72,7 +72,6 @@
 				]
 			});
 		});
-
 	function confirmDelete(id) {
 						var confirmation = confirm("Are you sure you want to delete this TekEvent?");
 						if (confirmation) {
@@ -107,27 +106,29 @@
 <div class="nav" role="navigation">
 	<ul>
 		<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-		<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+		<li><g:link class="create" action="create">
+			<g:message code="default.new.label" args="[entityName]" />
+		</g:link></li>
 	</ul>
 </div>
 <table class="display compact" id="dt">
 	<thead>
 	<tr>
-		<th>Name</th>
-		<th>City</th>
-		<th>Description</th>
-		<th>Edit</th>
-		<th>Delete</th>
+		<th><g:message code="default.button.Name.label" default="Name"/></th>
+		<th><g:message code="default.button.City.label" default="City"/></th>
+		<th><g:message code="default.button.Description.label" default="Description"/></th>
+		<th><g:message code="default.button.Edit.label" default="Edit"/></th>
+		<th><g:message code="default.button.Delete.label" default="Delete"/></th>
 	</tr>
 	</thead>
 	<tbody></tbody>
 	<tfoot>
 	<tr>
-		<th>Name</th>
-		<th>City</th>
-		<th>Description</th>
-		<th>Edit</th>
-		<th>Delete</th>
+		<th><g:message code="default.button.Name.label" default="Name"/></th>
+		<th><g:message code="default.button.City.label" default="City"/></th>
+		<th><g:message code="default.button.Description.label" default="Description"/></th>
+		<th><g:message code="default.button.Edit.label" default="Edit"/></th>
+		<th><g:message code="default.button.Delete.label" default="Delete"/></th>
 	</tr>
 	</tfoot>
 </table>

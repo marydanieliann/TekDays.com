@@ -5557,3 +5557,5 @@ n:1464:org/codehaus/groovy/runtime/callsite/StaticMetaMethodSite$StaticMetaMetho
 n:1106:org/grails/datastore/mapping/reflect/ClassPropertyFetcher$1
 y:1967:org/grails/datastore/mapping/reflect/ClassPropertyFetcher$GetterPropertyFetcher
 y:5602:org/grails/datastore/mapping/reflect/ReflectionUtils
+n:3047:org/springframework/web/servlet/i18n/SessionLocaleResolver
+n:3180:org/springframework/context/i18n/LocaleContextHolder

@@ -60,7 +60,7 @@
         <g:if test="${tekEventInstance?.city}">
             <li class="fieldcontain">
                 <span id="city-label" class="property-label">
-                    Location
+                    <g:message code="default.button.Location.label" default="Location"/>
                 </span>
 
                 <span class="property-value" aria-labelledby="city-label">

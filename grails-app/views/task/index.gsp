@@ -87,21 +87,21 @@
 	<table class="display compact" id="dt">
 		<thead>
 		<tr>
-			<th>Title</th>
-			<th>Assigned to</th>
-			<th>Due Date</th>
-			<th>Edit</th>
-			<th>Delete</th>
+			<th><g:message code="default.button.Title.label" default="Title"/></th>
+			<th><g:message code="default.button.AssignedTo.label" default="Assigned To"/></th>
+			<th><g:message code="default.button.DueDate.label" default="Due Date"/></th>
+			<th><g:message code="default.button.Edit.label" default="Edit"/></th>
+			<th><g:message code="default.button.Delete.label" default="Delete"/></th>
 		</tr>
 		</thead>
 		<tbody></tbody>
 		<tfoot>
 		<tr>
-			<th>Title</th>
-			<th>Assigned to</th>
-			<th>Due Date</th>
-			<th>Edit</th>
-			<th>Delete</th>
+			<th><g:message code="default.button.Title.label" default="Title"/></th>
+			<th><g:message code="default.button.AssignedTo.label" default="Assigned To"/></th>
+			<th><g:message code="default.button.DueDate.label" default="Due Date"/></th>
+			<th><g:message code="default.button.Edit.label" default="Edit"/></th>
+			<th><g:message code="default.button.Delete.label" default="Delete"/></th>
 		</tr>
 		</tfoot>
 	</table>

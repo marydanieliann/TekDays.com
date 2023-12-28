@@ -85,21 +85,21 @@
 	<table class="display compact" id="dt">
 		<thead>
 		<tr>
-			<th>Full Name</th>
-			<th>Website</th>
-			<th>Email</th>
-			<th>Edit</th>
-			<th>Revisions</th>
+			<th><g:message code="default.button.FullName.label" default="Full Name"/></th>
+			<th><g:message code="default.button.Website.label" default="Website"/></th>
+			<th><g:message code="default.button.Email.label" default="Email"/></th>
+			<th><g:message code="default.button.Edit.label" default="Edit"/></th>
+			<th><g:message code="default.button.Revisions.label" default="Revisions"/></th>
 		</tr>
 		</thead>
 		<tbody></tbody>
 		<tfoot>
 		<tr>
-			<th>Full Name</th>
-			<th>Website</th>
-			<th>Email</th>
-			<th>Edit</th>
-			<th>Revisions</th>
+			<th><g:message code="default.button.FullName.label" default="Full Name"/></th>
+			<th><g:message code="default.button.Website.label" default="Website"/></th>
+			<th><g:message code="default.button.Email.label" default="Email"/></th>
+			<th><g:message code="default.button.Edit.label" default="Edit"/></th>
+			<th><g:message code="default.button.Revisions.label" default="Revisions"/></th>
 		</tr>
 		</tfoot>
 	</table>

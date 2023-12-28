@@ -87,21 +87,21 @@
 	<table class="display compact" id="dt">
 		<thead>
 		<tr>
-			<th>Name</th>
-			<th>Website</th>
-			<th>Description</th>
-			<th>Edit</th>
-			<th>Delete</th>
+			<th><g:message code="default.button.Name.label" default="Name"/></th>
+			<th><g:message code="default.button.Website.label" default="Website"/></th>
+			<th><g:message code="default.button.Description.label" default="Description"/></th>
+			<th><g:message code="default.button.Edit.label" default="Edit"/></th>
+			<th><g:message code="default.button.Delete.label" default="Delete"/></th>
 		</tr>
 		</thead>
 		<tbody></tbody>
 		<tfoot>
 		<tr>
-			<th>Name</th>
-			<th>Website</th>
-			<th>Description</th>
-			<th>Edit</th>
-			<th>Delete</th>
+			<th><g:message code="default.button.Name.label" default="Name"/></th>
+			<th><g:message code="default.button.Website.label" default="Website"/></th>
+			<th><g:message code="default.button.Description.label" default="Description"/></th>
+			<th><g:message code="default.button.Edit.label" default="Edit"/></th>
+			<th><g:message code="default.button.Delete.label" default="Delete"/></th>
 		</tr>
 		</tfoot>
 	</table>

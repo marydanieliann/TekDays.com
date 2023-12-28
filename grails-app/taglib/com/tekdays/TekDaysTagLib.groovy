@@ -62,6 +62,9 @@ class TekDaysTagLib {
             if (events) {
                 out << "<div style='margin-left:25px; margin-top:25px; width:85%'>"
                 out << "<h3>Events you volunteered for:</h3>"
+              /*  out << "<label for=\"event\">\n" +
+                        "\t\t<h3><g:message code=\"volunteer.label\" default=\"Events you volunteered for:\" /> </h3>\n" +
+                        "\t</label>"*/
                 out << "<ul>"
                 events.each {
                     out << "<li><a href='"

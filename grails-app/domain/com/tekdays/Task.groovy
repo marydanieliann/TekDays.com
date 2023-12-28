@@ -9,7 +9,7 @@ class Task {
     TekUser assignedTo
     Date dueDate
     Date dateCreated
-    Date dateUpdated
+    Date lastUpdated
     TekEvent event
     Boolean completed
     Boolean deleted=false
@@ -29,9 +29,11 @@ class Task {
         dateCreated = new Date()
     }
 
-    def afterUpdate(){
+
+    ///if i have  a Date lastUpdated than i can not implement the method with the same name
+  /*  def afterUpdate(){
         dateUpdated = new Date()
-    }
+    }*/
 
     static belongsTo = TekEvent
 }
