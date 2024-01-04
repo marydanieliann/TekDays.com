@@ -46,7 +46,7 @@
                     <g:fieldValue bean="${tekEventInstance}" field="name"/></span>
             </li>
         </g:if>
-        <g:if test="${tekEventInstance?.description}">
+       <g:if test="${tekEventInstance?.description}">
             <li class="fieldcontain">
                 <span id="description-label" class="property-label"><g:message
                         code="tekEvent.description.label" default="Description"/></span>

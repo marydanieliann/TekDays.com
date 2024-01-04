@@ -15,6 +15,10 @@ class UrlMappings {
             action = "show"
         }
 
+        "/tekEvent/"(controller: "tekEvent"){
+            action=[GET:'index', PUT:'save', POST:'update']
+        }
+
         "/TekDays.com/tekEvent/index$lang"(controller: 'tekEvent')
         "/TekDays.com/tekEvent/create$lang"(controller: 'tekEvent')
     }

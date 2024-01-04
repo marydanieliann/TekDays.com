@@ -19,10 +19,12 @@
         <r:layoutResources/>
     </head>
 <body>
-<div id="logo" role="banner"><a href="${createLink(uri: '/')}">
-    <img src="${resource(dir: 'images', file: 'tek-dayslogo.png')}"
-         alt="TekDays" style="width:auto; height: auto; margin-left: -20px"/></a>
 
+<div id="logo" role="banner">
+    <a href="${createLink(uri: '/', params: [lang: session?.lang != null ? session?.lang : ''])}">
+        <img src="${resource(dir: 'images', file: 'tek-dayslogo.png')}"
+             alt="TekDays" style="width:auto; height: auto; margin-left: -20px"/>
+    </a>
 </div>
     <g:select name="lang" class="lang form-select w-25 h-100 m-2 " keys="['en', 'ru', 'arm']"
           from="['🇺🇲  English', '🇷🇺  Русский', '🇦🇲  Հայերեն']" style="float:right"/>
@@ -54,7 +56,7 @@
 
 <g:javascript library="jquery"/>
 <g:javascript library="application"/>
-
+%{--
 <script>
     $(document).ready(function () {
         $.ajax({
@@ -87,7 +89,32 @@
             });
         });
     });
+</script>--}%
+<script>
+    $(document).ready(function () {
+        let currentLang = localStorage.getItem('selectedLang');
+        $('.lang').val(currentLang);
+        $('.lang').change(function () {
+            let val = $(this).val();
+            localStorage.setItem('selectedLang', val);
+            $.ajax({
+                type: 'POST',
+                url: '/TekDays.com/language/changeLang',
+                data: {
+                    "lang": val,
+                },
+                success: function (data) {
+                    console.log('Language changed successfully');
+                    window.location.href = window.location.pathname + "?lang=" + val;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log("Error changing language");
+                }
+            });
+        });
+    });
 </script>
+
 </body>
 </html>
 

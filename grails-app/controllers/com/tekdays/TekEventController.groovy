@@ -53,7 +53,7 @@ class TekEventController {
             } else {
                 flash.message = "TekEvent not found with id $id"
             }
-            redirect(action: "list")
+            redirect(action: "index")
             return
         }
         [tekEventInstance: tekEventInstance]

@@ -46,7 +46,7 @@
 					},
 					render: function ( data, type, full, meta ) {
 						if (data) {
-							return '<a href="edit/' + data + '" class="edit_btn"> <i class="fas fa-edit" > Edit </i> </a>';
+							return '<a href="tekEvent/edit/' + data + '" class="edit_btn"> <i class="fas fa-edit" > Edit </i> </a>';
 						} else {
 							return "";
 						}
