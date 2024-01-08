@@ -5559,3 +5559,7 @@ y:1967:org/grails/datastore/mapping/reflect/ClassPropertyFetcher$GetterPropertyF
 y:5602:org/grails/datastore/mapping/reflect/ReflectionUtils
 n:3047:org/springframework/web/servlet/i18n/SessionLocaleResolver
 n:3180:org/springframework/context/i18n/LocaleContextHolder
+n:17777:grails/converters/XML
+n:943:org/codehaus/groovy/grails/web/xml/StreamingMarkupWriter
+n:4120:groovy/xml/streamingmarkupsupport/StreamingMarkupWriter
+n:3100:org/codehaus/groovy/grails/web/xml/XMLStreamWriter

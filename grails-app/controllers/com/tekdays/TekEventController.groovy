@@ -1,6 +1,7 @@
 package com.tekdays
 
 import grails.converters.JSON
+import grails.converters.XML
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import static org.springframework.http.HttpStatus.*
@@ -11,6 +12,7 @@ class TekEventController {
     def datatablesSourceService
     def taskService
     private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
+    def responseFormats=['json','xml','html','text']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -39,6 +41,71 @@ class TekEventController {
         }
         render data as JSON
     }
+
+
+    @Transactional
+    def getByID(Long id){
+        TekEvent tekEvent = TekEvent.findById(id)
+        if (tekEvent) {
+            withFormat {
+                xml { render(tekEvent as XML) }
+               /* json {
+                    def jsonify = tekEvent as JSON
+                    jsonify.prettyPrint = true
+                    render jsonify
+                }
+                html {
+                    render {
+                        H3(tekEvent, ["style": "font-family:Monospace"])
+                    }
+                }*/
+            }
+        } else response.sendError 404
+    }
+
+    def getAll() {
+        def tekEvents = TekEvent.list()
+
+        if (tekEvents) {
+            withFormat {
+                xml {
+                    tekEvents.each{tekEvent ->
+                        task{
+                            name(tekEvent.name)
+                        }
+                    }
+
+//                    render tekEvents as XML
+                }
+                json {
+                    def jsonify = tekEvents.collect { [name: it.name] }
+                    render jsonify
+                }
+                text {
+                    StringBuilder stringBuilder = new StringBuilder("")
+                    tekEvents.each {
+                        stringBuilder.append("NAME-> ${it.name}\n")
+                    }
+                    render(stringBuilder.toString())
+                }
+                html {
+                    render {
+                        ul {
+                            tekEvents.each {
+                                li {
+                                    h3("${it.name}", ["style": "font-family: Monospace"])
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            response.sendError 404
+        }
+    }
+
+
 
     def show(Long id) {
         def tekEventInstance

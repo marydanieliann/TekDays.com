@@ -143,6 +143,7 @@ grails.project.dependency.resolution = {
         compile('org.hibernate:hibernate-envers:4.3.11.Final') {
             transitive = false
         }
+
     }
 
     plugins {

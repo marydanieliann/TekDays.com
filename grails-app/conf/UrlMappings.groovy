@@ -15,8 +15,20 @@ class UrlMappings {
             action = "show"
         }
 
+        "/api/$id?/$format?" {
+            controller="tekEvent"
+            action=[
+                    GET:'getByID',
+            ]
+        }
+
         "/tekEvent/"(controller: "tekEvent"){
-            action=[GET:'index', PUT:'save', POST:'update']
+            action=[GET:'index', POST:'save'/*, PUT:'update'*/]
+        }
+
+        "/api/$format?" {
+            controller='tekEvent'
+            action='getAll'
         }
 
         "/TekDays.com/tekEvent/index$lang"(controller: 'tekEvent')
