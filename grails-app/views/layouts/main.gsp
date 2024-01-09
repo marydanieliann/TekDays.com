@@ -21,7 +21,7 @@
 <body>
 
 <div id="logo" role="banner">
-    <a href="${createLink(uri: '/', params: [lang: session?.lang != null ? session?.lang : ''])}">
+   <a href="${createLink(uri: '/', params: [lang: session?.lang != null ? session?.lang : 'en'])}">
         <img src="${resource(dir: 'images', file: 'tek-dayslogo.png')}"
              alt="TekDays" style="width:auto; height: auto; margin-left: -20px"/>
     </a>
@@ -30,16 +30,11 @@
           from="['🇺🇲  English', '🇷🇺  Русский', '🇦🇲  Հայերեն']" style="float:right"/>
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href='${createLink(uri: "/?lang=${session?.lang != null ? session?.lang : ''}")}'
+            <a href='${createLink(uri: "/?lang=${session?.lang != null ? session?.lang : 'en'}")}'
                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                 <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
             </a>
             <br>
-         %{--   <ul class="nav nav-pills" style="float: right">
-                <li class="nav-item">
-                    <g:loginToggle class="nav-link" />
-                </li>
-            </ul>--}%
         </header>
     </div>
     <div class="userName" style="float: right">
@@ -56,40 +51,6 @@
 
 <g:javascript library="jquery"/>
 <g:javascript library="application"/>
-%{--
-<script>
-    $(document).ready(function () {
-        $.ajax({
-            type: 'POST',
-            url: '/TekDays.com/language/checkLang',
-            data: {},
-            success: function (data) {
-                $('.lang').val(data);
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log("Error fetching language");
-            }
-        });
-
-        $('.lang').change(function () {
-            let val = $(this).val();
-            $.ajax({
-                type: 'POST',
-                url: '/TekDays.com/language/changeLang',
-                data: {
-                    "lang": val,
-                },
-                success: function (data) {
-                    console.log('Language changed successfully');
-                    window.location.href = window.location.pathname + "?lang=" + val;
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    console.log("Error changing language");
-                }
-            });
-        });
-    });
-</script>--}%
 <script>
     $(document).ready(function () {
         let currentLang = localStorage.getItem('selectedLang');

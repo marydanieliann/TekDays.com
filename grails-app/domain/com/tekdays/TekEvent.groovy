@@ -13,7 +13,6 @@ class TekEvent {
     Date startDate
     Date endDate
     String description
-    String nickname
     Boolean deleted = false
     static searchable = true
     //one to many relationship
@@ -36,7 +35,6 @@ class TekEvent {
         sponsorships nullable: true
         tasks nullable: true
         messages nullable: true
-        nickname nullable: true
     }
 
 

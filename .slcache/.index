@@ -5563,3 +5563,6 @@ n:17777:grails/converters/XML
 n:943:org/codehaus/groovy/grails/web/xml/StreamingMarkupWriter
 n:4120:groovy/xml/streamingmarkupsupport/StreamingMarkupWriter
 n:3100:org/codehaus/groovy/grails/web/xml/XMLStreamWriter
+n:7038:groovy/json/JsonSlurper
+n:4554:BuildConfig
+n:1258:org/apache/tools/ant/IntrospectionHelper$1

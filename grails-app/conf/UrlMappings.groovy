@@ -10,25 +10,24 @@ class UrlMappings {
         "/"(view: "/index")
         "500"(view: '/error')
 
-        "/events/$nickname" {
-            controller = "tekEvent"
-            action = "show"
-        }
-
         "/api/$id?/$format?" {
-            controller="tekEvent"
-            action=[
-                    GET:'getByID',
+            controller = 'tekEvent'
+            action = [
+                    POST  : 'create',
+                    GET   : 'getByID',
+                    PUT   : 'update',
+                    DELETE: 'delete',
             ]
         }
 
-        "/tekEvent/"(controller: "tekEvent"){
-            action=[GET:'index', POST:'save'/*, PUT:'update'*/]
-        }
+   /*     "/tekEvent/"(controller: "tekEvent"){
+            action=[GET:'index', POST:'save', PUT:'update']
+        }*/
+
 
         "/api/$format?" {
             controller='tekEvent'
-            action='getAll'
+            action=[GET:'index']
         }
 
         "/TekDays.com/tekEvent/index$lang"(controller: 'tekEvent')

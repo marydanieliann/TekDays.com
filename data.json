@@ -1,0 +1,41 @@
+{
+  "city": "angola",
+  "deleted": false,
+  "description": "just a event",
+  "endDate": "2024-01-07T20:00:00Z",
+  "messages":
+  [
+  ],
+  "name": "Event",
+  "nickname": null,
+  "organizer": {
+    "class": "com.tekdays.TekUser",
+    "id": 5
+  },
+  "respondents":
+  [
+  ],
+  "sponsorships":
+  [
+  ],
+  "startDate": "2008-01-07T20:00:00Z",
+  "tasks":
+  [
+  ],
+  "venue": "None",
+  "volunteers":
+  [
+    {
+      "class": "com.tekdays.TekUser",
+      "id": 6
+    },
+    {
+      "class": "com.tekdays.TekUser",
+      "id": 7
+    },
+    {
+      "class": "com.tekdays.TekUser",
+      "id": 5
+    }
+  ]
+}

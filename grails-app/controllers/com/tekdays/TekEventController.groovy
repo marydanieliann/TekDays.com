@@ -2,22 +2,23 @@ package com.tekdays
 
 import grails.converters.JSON
 import grails.converters.XML
+import groovy.json.JsonSlurper
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional()
+@Transactional
 class TekEventController {
     def datatablesSourceService
     def taskService
     private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
-    def responseFormats=['json','xml','html','text']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond TekEvent.list(params), model: [tekEventInstanceCount: TekEvent.count()]
+        [properties:['name', 'city', 'organizer', 'action', 'revision']]
+//        params.max = Math.min(max ?: 10, 100)
+//        respond TekEvent.list(params), model: [tekEventInstanceCount: TekEvent.count()]
     }
 
     def dataTablesRenderer() {
@@ -42,40 +43,52 @@ class TekEventController {
         render data as JSON
     }
 
-
-    @Transactional
+    @Transactional(readOnly = true)
     def getByID(Long id){
         TekEvent tekEvent = TekEvent.findById(id)
         if (tekEvent) {
             withFormat {
                 xml { render(tekEvent as XML) }
-               /* json {
+                json {
                     def jsonify = tekEvent as JSON
                     jsonify.prettyPrint = true
                     render jsonify
                 }
                 html {
                     render {
-                        H3(tekEvent, ["style": "font-family:Monospace"])
+                        html {
+                            body {
+                                h1("${tekEvent.name}", ["style": "font-family: Monospace"])
+                                p("City: ${tekEvent.city}")
+                                p("Start Date: ${tekEvent.startDate}")
+                                p("Description: ${tekEvent.description}")
+                                p("End Date: ${tekEvent.endDate}")
+                            }
+                        }
                     }
-                }*/
+                }
             }
         } else response.sendError 404
     }
 
-    def getAll() {
+
+   def getAll() {
         def tekEvents = TekEvent.list()
 
         if (tekEvents) {
             withFormat {
                 xml {
-                    tekEvents.each{tekEvent ->
-                        task{
-                            name(tekEvent.name)
+                    render(contentType: "text/xml") {
+                        tekEventsList{
+                            tekEvents.each{event->
+                                tekEvent{
+                                    name(event.name)
+                                    city(event.city)
+                                }
+                            }
                         }
+//                       tekEvents as XML
                     }
-
-//                    render tekEvents as XML
                 }
                 json {
                     def jsonify = tekEvents.collect { [name: it.name] }
@@ -84,20 +97,12 @@ class TekEventController {
                 text {
                     StringBuilder stringBuilder = new StringBuilder("")
                     tekEvents.each {
-                        stringBuilder.append("NAME-> ${it.name}\n")
+                        stringBuilder.append("Name of event = ${it.name}<br>")
                     }
                     render(stringBuilder.toString())
                 }
                 html {
-                    render {
-                        ul {
-                            tekEvents.each {
-                                li {
-                                    h3("${it.name}", ["style": "font-family: Monospace"])
-                                }
-                            }
-                        }
-                    }
+                    render(view: 'getAll', model: [tekEvents: tekEvents])
                 }
             }
         } else {
@@ -126,16 +131,7 @@ class TekEventController {
         [tekEventInstance: tekEventInstance]
     }
 
-    def create() {
-        respond new TekEvent(params)
-    }
-
-    def search = {
-        if (params.query) {
-            def events = TekEvent.search(params.query).results
-            [events: events]
-        }
-    }
+    def create() {}
 
     @Transactional
     def save(TekEvent tekEventInstance) {
@@ -163,7 +159,7 @@ class TekEventController {
     }
 
     def edit(TekEvent tekEventInstance) {
-        respond tekEventInstance
+        [tekEventInstance : tekEventInstance]
     }
 
     @Transactional
@@ -187,7 +183,7 @@ class TekEventController {
                                tekEventInstance.id])
                 redirect view: 'index'
             }
-            '*' { respond tekEventInstance, [status: OK] }
+            '*' { respond tekEventInstance, [status: CREATED] }
         }
     }
 
@@ -220,6 +216,7 @@ class TekEventController {
             '*' { render status: NOT_FOUND }
         }
     }
+
     def volunteer = {
         def event = TekEvent.get(params.id)
         event.addToVolunteers(session.user)

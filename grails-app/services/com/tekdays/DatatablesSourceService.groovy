@@ -64,7 +64,7 @@ class DatatablesSourceService implements GrailsApplicationAware {
         if (params.sSearch) {
             String sSearch = params.sSearch
             // Revise the number of total display records after applying the filter
-            def countQuery = new StringBuilder("select count(*) from ${entityName} as dt where dt.id is not null")
+            def countQuery = new StringBuilder("select count(*) from ${entityName} as dt where dt.id is not null and dt.deleted=false")
             countQuery.append(appendToQuery).append(" and (${filter})")
             def result = clazz.executeQuery(countQuery.toString(), [filter: "%${sSearch}%"])
             if (result) {
@@ -73,7 +73,7 @@ class DatatablesSourceService implements GrailsApplicationAware {
             records = clazz.findAll(query.toString(), [filter: "%${sSearch}%"], [max: params.iDisplayLength as int, offset: params.iDisplayStart as int])
         } else if (someFilter) {
             // Revise the number of total display records after applying the filter
-            def countQuery = new StringBuilder("select count(*) from ${entityName} as dt where dt.id is not null")
+            def countQuery = new StringBuilder("select count(*) from ${entityName} as dt where dt.id is not null and dt.deleted=false")
             countQuery.append(appendToQuery).append(" and (${filter})")
             def result = clazz.executeQuery(countQuery.toString())
             if (result) {
@@ -82,7 +82,7 @@ class DatatablesSourceService implements GrailsApplicationAware {
             records = clazz.findAll(query.toString(), [max: params.iDisplayLength as int, offset: params.iDisplayStart as int])
         } else {
             // Revise the number of total display records after applying the filter
-            def countQuery = new StringBuilder("select count(*) from ${entityName} as dt where dt.id is not null")
+            def countQuery = new StringBuilder("select count(*) from ${entityName} as dt where dt.id is not null and dt.deleted=false" )
             countQuery.append(appendToQuery)
             def result = clazz.executeQuery(countQuery.toString())
             if (result) {

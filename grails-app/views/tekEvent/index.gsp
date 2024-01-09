@@ -15,8 +15,11 @@
 				bJQueryUI: false,
 				bAutoWidth: false,
 				sPaginationType: "full_numbers",
-				aLengthMenu: [5,10,25,50,100,200],
-				iDisplayLength: 10,
+				aLengthMenu: [5],
+				"oLanguage": {
+					 "sInfoFiltered": ""
+				   },
+				iDisplayLength: 5,
 				aoColumnDefs: [
                     {
                         render: function (data, type, full, meta) {
@@ -46,6 +49,8 @@
 					},
 					render: function ( data, type, full, meta ) {
 						if (data) {
+                            console.log(4585);
+                            %{--                            return '<a href="${createLink(controller: 'TekEvent', action: 'edit')}/' + data + '" class="btn"> </a>';--}%
 							return '<a href="tekEvent/edit/' + data + '" class="edit_btn"> <i class="fas fa-edit" > Edit </i> </a>';
 						} else {
 							return "";
