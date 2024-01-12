@@ -37,10 +37,11 @@
             <br>
         </header>
     </div>
-    <div class="userName" style="float: right">
-        <g:loginToggle class="nav-link"/>
+    <div class="userName" style="float:right">
+        <g:register/>
+        <g:loginToggle/>
+        <g:admin/>
     </div>
-
 
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>

@@ -1,0 +1,38 @@
+/* Reset Styles */
+#outlook a, .es-button, a[x-apple-data-detectors] { padding: 0; }
+
+/* Body Styles */
+body { width: 100%; font-family: Imprima, Arial, sans-serif; }
+
+/* Table Styles */
+table { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; }
+
+/* Padding Styles */
+.es-p5, .es-p10, .es-p15, .es-p20, .es-p25, .es-p30, .es-p35, .es-p40 { padding: 5px, 10px, 15px, 20px, 25px, 30px, 35px, 40px; }
+
+/* Typography Styles */
+p, h1, h2, h3, h4, h5, s { Margin: 0; font-family: Imprima, Arial, sans-serif; }
+
+/* Link Styles */
+a { text-decoration: underline; }
+.es-menu td a { text-decoration: none; }
+
+/* Layout Styles */
+.es-left, .es-right { float: left; }
+.es-desk-hidden { display: none; }
+
+/* Color Styles */
+.es-wrapper, .es-wrapper-color, .es-header, .es-header-body, .es-content-body, .es-footer, .es-footer-body, .es-infoblock { background-color: #ffffff; }
+/* ... (other color styles) ... */
+
+/* Button Styles */
+a.es-button, button.es-button { padding: 15px 20px; /* ... (other button styles) ... */ }
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) { /* ... (responsive styles) ... */ }
+
+/* Default Font Styles */
+html, body { font-family: arial, 'helvetica neue', helvetica, sans-serif; }
+
+/* Padding Defaults */
+.es-p-default { padding-top: 20px; padding-right: 40px; padding-bottom: 0px; padding-left: 40px; }

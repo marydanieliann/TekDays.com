@@ -1,4 +1,5 @@
 
+
 <%@ page import="com.tekdays.Task" %>
 <!DOCTYPE html>
 <html>
@@ -48,7 +49,7 @@
 					},
 					render: function ( data, type, full, meta ) {
 						if (data) {
-							return '<a href="edit/' + data + '" class="btn"> <i class="fas fa-edit" > Edit </i> </a>';
+							return '<a href="task/edit/' + data + '" class="btn"> <i class="fas fa-edit" > Edit </i> </a>';
 						} else {
 							return "";
 						}
@@ -107,3 +108,4 @@
 	</table>
 	</body>
 </html>
+

@@ -2,6 +2,7 @@ package com.tekdays
 
 import grails.converters.JSON
 import grails.converters.XML
+import grails.plugin.mail.MailService
 import groovy.json.JsonSlurper
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -12,6 +13,7 @@ import grails.transaction.Transactional
 class TekEventController {
     def datatablesSourceService
     def taskService
+    MailService mailService
     private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -71,7 +73,6 @@ class TekEventController {
         } else response.sendError 404
     }
 
-
    def getAll() {
         def tekEvents = TekEvent.list()
 
@@ -110,8 +111,6 @@ class TekEventController {
         }
     }
 
-
-
     def show(Long id) {
         def tekEventInstance
         if (params.nickname) {
@@ -143,6 +142,13 @@ class TekEventController {
         if (tekEventInstance.hasErrors()) {
             respond tekEventInstance.errors, view: 'create'
             return
+        }
+
+        mailService.sendMail {
+            LOGGER.info("Send mail")
+            to "danielianmeri@gmail.com"
+            subject "Event ' ${tekEventInstance.name} '"
+            html g.render(template: "test")
         }
 
         tekEventInstance.save flush: true
@@ -183,7 +189,7 @@ class TekEventController {
                                tekEventInstance.id])
                 redirect view: 'index'
             }
-            '*' { respond tekEventInstance, [status: CREATED] }
+            '*' { respond tekEventInstance, [status: OK] }
         }
     }
 

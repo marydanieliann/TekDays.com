@@ -14,11 +14,12 @@ class TaskController {
     def datatablesSourceService
     SessionFactory sessionFactory
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-    private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
+    private static final Logger LOGGER = LoggerFactory.getLogger(TaskController.class)
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Task.list(params), model: [taskInstanceCount: Task.count()]
+
     }
 
     def dataTablesRenderer() {

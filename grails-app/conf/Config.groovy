@@ -1,11 +1,10 @@
 // locations to search for config files that get merged into the main config;
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
-
-// grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
+grails.config.locations = ["classpath:${appName}-config.properties",
+                           "classpath:${appName}-config.groovy",
+                           "file:${userHome}/.grails/${appName}-config.properties",
+                           "file:${userHome}/.grails/${appName}-config.groovy"]
 
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
@@ -59,7 +58,6 @@ grails {
     }
 }
 
-
 grails.converters.encoding = "UTF-8"
 // scaffolding templates configuration
 grails.scaffolding.templates.domainSuffix = 'Instance'
@@ -85,18 +83,23 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
-//environments {
-//    development {
-//        grails.logging.jul.usebridge = true
-//    }
-//    production {
-//        grails.logging.jul.usebridge = false
-//        // TODO: grails.serverURL = "http://www.changeme.com"
-//    }
-//}
+environments {
+    development {
+        grails.logging.jul.usebridge = true
+    }
+    production {
+        grails.logging.jul.usebridge = false
+        // TODO: grails.serverURL = "http://www.changeme.com"
+    }
+}
 
 // log4j configuration
-log4j = {
+log4j.main = {
+    // Example of changing the log pattern for the default console appender:
+    //
+    //appenders {
+    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+    //}
     error 'org.codehaus.groovy.grails.web.servlet',        // controllers
             'org.codehaus.groovy.grails.web.pages',          // GSP
             'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -108,10 +111,11 @@ log4j = {
             'org.springframework',
             'org.hibernate',
             'net.sf.ehcache.hibernate'
+}
 /*logger {
     trace "org.hibernate.SQL",
     "org.hibernate.type"
-}*/
+}
 
     environments {
         development {
@@ -121,5 +125,4 @@ log4j = {
             ////the last one is the operation that we  want to do
             info 'com.tekdays'
         }
-    }
-}
+    }*/

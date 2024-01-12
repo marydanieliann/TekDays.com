@@ -12,13 +12,16 @@ class TekUser {
     String website
     String bio
     Boolean deleted=false
-
+    UserRole userRole
     String toString() { fullName }
+    Boolean enable = false
+
     static constraints = {
         fullName()
         userName()
         email()
         website()
         bio maxSize: 5000
+        userRole nullable: false
     }
 }

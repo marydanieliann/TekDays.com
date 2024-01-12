@@ -10,7 +10,7 @@ class UrlMappings {
         "/"(view: "/index")
         "500"(view: '/error')
 
-        "/api/$id?/$format?" {
+        /*"/api/$id?/$format?" {
             controller = 'tekEvent'
             action = [
                     POST  : 'create',
@@ -18,11 +18,16 @@ class UrlMappings {
                     PUT   : 'update',
                     DELETE: 'delete',
             ]
-        }
-
-   /*     "/tekEvent/"(controller: "tekEvent"){
-            action=[GET:'index', POST:'save', PUT:'update']
         }*/
+
+       "/tekEvent/"(controller: "tekEvent"){
+             action = [
+                    POST  : 'create',
+                    GET   : 'getByID',
+                    PUT   : 'update',
+                    DELETE: 'delete',
+            ]
+        }
 
 
         "/api/$format?" {
